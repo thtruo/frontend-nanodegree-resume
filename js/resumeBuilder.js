@@ -1,91 +1,155 @@
-// $('#main').append(['Thomas Truongchau']);
-
-// var formattedName = HTMLheaderName.replace('%data%', 'Thomas Truongchau');
-// var formattedRole = HTMLheaderRole.replace('%data%', 'Web Developer');
-
-// $('#header').append(formattedName);
-// $('#header').append(formattedRole);
-
-// $('#main').append(skills);
-
-var bio = {
-  'name' : '<h1>Thomas</h1>',
-  'role' : '<h2>Program Manager<h2>',
-  'contacts' : {
-    'email' : '<p>email@email.com</p>',
-    'mobile' : '<p>123-456-7890</p>',
-    'github' : '<p>thtruo</p>',
-    'twitter' : '<p>@ttruongchau</p>',
-    'location' : '<p>Seattle</p>'
-  },
-  'profileUrl' : '<img src="images/fry.jpg" alt="profile picture">',
-  'age' : '<p>23</p>',
-  'welcomeMessage' : '<p>Hello! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem hic, magnam voluptate quia error at labore culpa eaque dignissimos. Fuga numquam, distinctio nesciunt quia optio, sed iste! Perspiciatis, laudantium, neque!</p>',
-  'skills' : [
-    'awesomeness, js, product management, data analytics'
+/************************ EMPLOYMENT ************************/
+var work = {
+  'jobs' : [
+    {
+      'employer' : 'Microsoft',
+      'title' : 'Program Manager',
+      'location' : 'Bellevue, WA',
+      'dates' : 'September 2014 - Present',
+      'description' : 'Analysis & Experimentation Team. Create better features for the ExP Platform to enable all Microsoft teams to run trustworthy experimentation. Work across teams to evangelize a data-driven culture at Microsoft. Currently partnering with MSN teams to improve their experimentation capabilities and to run more experiments using our platform. Actively heading a team of data scientists, developers, and partner PMs to enable experimentation for the Spartan Default Homepage.',
+      'keywords' : [
+        'experimentation',
+        'ab testing',
+        'flighting',
+        'data science',
+        'data analytics',
+        'product management',
+        'design',
+        'SQL',
+        'excel',
+        'html',
+        'css',
+        'javascript'
+      ]
+    },
+    {
+      'employer' : 'Microsoft',
+      'title' : 'Program Manager Intern',
+      'location' : 'Bellevue, WA',
+      'dates' : 'June 2013 - Aug 2013',
+      'description' : 'Online Experimentation team. Designed, spec\'d, and implemented an experimentation management dashboard for experimenters. Dashboard feature improved users\' efficiency in accessing all running, completed, and new experiments.',
+      'keywords' : [
+        'internship',
+        'experimentation',
+        'online experimentation',
+        'ab testing',
+        'flighting',
+        'data science',
+        'data analytics',
+        'product management',
+        'design',
+        'SQL',
+        'excel',
+        'html',
+        'css',
+        'javascript'
+      ]
+    }
   ]
 };
 
-var work = {
-  'position' : 'Program Manager',
-  'employer' : 'Microsoft',
-  'yearsWorked' : '2014 - Present',
-  'city' : 'Bellevue',
-  'State' : 'Washington'
-};
+function displayWork() {
+  for (var job in work.jobs) {
+    $('#workExperience').append(HTMLworkStart);
+    var formattedEmployer = HTMLworkEmployer.replace('%data%', work.jobs[job]['employer']);
+    var formattedTitle = HTMLworkTitle.replace('%data%', work.jobs[job]['title']);
 
-$('#header').append(bio.name);
-$('#header').append(bio.role);
-$('#header').append(bio.contacts.email);
-$('#header').append(bio.age);
-$('#header').append(bio.welcomeMessage);
+    var formattedWorkDates = HTMLworkDates.replace('%data%', work.jobs[job]['dates']);
+    var formattedWorkLocation = HTMLworkLocation.replace('%data%', work.jobs[job]['location']);
+    var formattedWorkDescription = HTMLworkDescription.replace('%data%', work.jobs[job]['description']);
 
-$('#header').append('<h3>Skills</h3>');
-for (var i = 0; i < bio.skills.length; i++) {
-  $('#header').append('<p>' + bio.skills[i] + '</p>');
+    $('.work-entry:last').append(formattedEmployer + formattedTitle + formattedWorkDates + formattedWorkLocation + formattedWorkDescription);
+  }
 }
 
-$('#workExperience').append(work['position']);
-$('#workExperience').append(work.employer);
-$('#workExperience').append(work.yearsWorked);
+displayWork();
 
-/*
-var education = {
-  'name' : 'Princeton University',
-  'graduatingYear' : '2014',
-  'city' : 'Princeton',
-  'state' : 'New Jersey'
+
+
+/************************ PROJECTS ************************/
+var projects = {
+  'projects' : [
+    {
+      'title' : '<a href="http://www.ptour.co">PTour</a>',
+      'dates' : 'Spring 2014',
+      'description' : 'A virtual campus tour of Princeton University for prospective students. Built with <a href="https://www.meteor.com/">Meteor</a> (v0.8).',
+      'images' : ''
+    }
+  ]
 };
 
-$('#education').append(education.name);
-$('#education').append(education.graduatingYear);
-$('#education').append(education.city);
-$('#education').append(education.state);
-*/
 
+
+/************************ BIO ************************/
+var bio = {
+  'name' : 'Thomas Truongchau',
+  'role' : 'Program Manager',
+  'welcomeMessage' : 'Hi there!',
+  'contacts' : {
+    'email' : 'ttruongchau at gmail dot com',
+    'github' : 'thtruo',
+    'twitter' : '@ttruongchau',
+    'location' : 'Seattle, WA',
+  },
+  'skills' : [
+    'HTML',
+    'CSS',
+    'Javascript',
+    'JQuery',
+    'Bootstrap',
+    'Meteorjs',
+    'SQL',
+    'Python',
+    'Java',
+    'C',
+    'Product Design',
+    'Web Analytics',
+    'Data Analytics'
+  ]
+};
+
+var formattedHeader = HTMLheaderName.replace('%data%', bio.name);
+var formattedRole = HTMLheaderRole.replace('%data%', bio.role);
+$('#header').append(formattedHeader + formattedRole);
+
+var formattedBioPic = HTMLbioPic.replace('%data%', 'images/me.png');
+$('#header').append(formattedBioPic);
+
+if (bio.skills.length > 0) {
+  $('#header').append(HTMLskillsStart);
+  for (var i = 0; i < bio.skills.length; i++) {
+    $('#skills').append(HTMLskills.replace('%data%', bio.skills[i]));
+  }
+}
+
+if (Object.keys(bio.contacts).length > 0) {
+  for (var c in bio.contacts) {
+    var formattedContact = HTMLcontactGeneric.replace('%contact%', c);
+    var formattedContactData = formattedContact.replace('%data%', bio.contacts[c]);
+    $('#topContacts').append(formattedContactData);
+  }
+}
+
+
+
+/************************ EDUCATION ************************/
 var education = {
   'schools' : [
     {
       'name' : 'Princeton University',
-      'major' : 'Computer Science',
-      'minor' : '',
-      'graduatingYear' : '2014',
-      'location' : 'Princeton, NJ'
-    },
-    {
-      'school' : 'Udacity',
-      'major' : 'Front-End Web Developer Nanodegree',
-      'minor' : '',
-      'graduatingYear' : '2015',
-      'location' : 'Online'
+      'location' : 'Princeton, NJ',
+      'degree' : 'B.S.E',
+      'majors' : ['Computer Science'],
+      'dates' : '2010 - 2014',
+      'url' : 'http://www.cs.princeton.edu/'
     }
   ],
   'onlineCourses' : [
-    'title' : 'Javascript Syntax',
-    'school' : 'Udacity',
-    'dates' : '2015',
-    'url' : 'http://www.udacity.com/course/ud804'
+    {
+      'title' : 'Javascript Basics',
+      'school' : 'Udacity',
+      'dates' : 'January 2015 - Present',
+      'url' : 'http://www.udacity.com/course/ud804'
+    }
   ]
 };
-
-$('#main').append(bio.profileUrl);
