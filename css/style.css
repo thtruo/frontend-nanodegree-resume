@@ -1,7 +1,7 @@
 * {
   padding:0;
   margin:0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 .clearfix {
@@ -15,7 +15,7 @@
 
 h1 {
   font-size: 40px;
-  color: #F5A623;
+  color: #F57C00;
   line-height: 48px;
   display: inline;
 }
@@ -23,7 +23,7 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 24px;
-  color: #999999;
+  color: #777;
   line-height: 29px;
   padding: 10px;
 }
@@ -31,7 +31,7 @@ h2 {
 h3 {
   font-style: italic;
   font-size: 20px;
-  color: #000000;
+  color: #212121;
   line-height: 22px;
 }
 
@@ -68,7 +68,7 @@ h2, h3, h4, h5 {
 
 p {
   font-size: 14px;
-  color: #333333;
+  color: #212121;
   line-height: 21px;
 }
 
@@ -87,16 +87,17 @@ a {
 }
 
 #skillsH3 {
-  color: #F5AE23;
+  color: #F57C00;
   display: none;
+  margin-top: 25px;
 }
 
 .orange {
-  background-color: #F5AE23;
+  background-color: #F57C00;
 }
 
 .orange-text {
-  color: #F5AE23;
+  color: #F57C00;
 }
 
 .white-text {
@@ -144,6 +145,7 @@ ul {
   padding: 10px;
   width: 200px;
   display: none;
+  border-radius: 109px;
 }
 
 img {
@@ -162,14 +164,19 @@ img {
   display: inline-block;
 }
 
-span {
+#role {
   padding: 5px;
+  color: #F3F3F3;
+  font-size: 20px;
 }
 
 #letsConnect {
   text-align: center;
 }
 
+#letsConnect h2 {
+  color: #444;
+}
 @media only screen and (max-width: 1024px) {
   #letsConnect {
     margin-top: 5%;
@@ -212,4 +219,28 @@ span {
   .biopic {
     display: block;
   }
+}
+
+.education-entry h3 {
+  padding-left: 0;
+  padding-bottom: 5px;
+  margin-top: 20px;
+}
+
+.online-course-link {
+  margin-top: 0px;
+  font-size: 14px;
+}
+
+#topContacts span, #footerContacts span {
+  padding-right: 5px;
+}
+
+.welcome-message {
+  padding-left: 5px;
+}
+
+#footer-timestamp {
+  background: #FF9800;
+  color: #444;
 }

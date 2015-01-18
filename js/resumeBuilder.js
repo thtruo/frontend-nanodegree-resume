@@ -1,14 +1,12 @@
 // $('#main').append(internationalizeButton);
 
-function inName(firstName, lastName) {
-  var modifiedFirstName = firstName[0].toUpperCase() + firstName.slice(1).toLowerCase();
-  var modifiedLastName = lastName.toUpperCase();
-  return modifiedFirstName + ' ' + modifiedLastName;
-}
+// function inName(firstName, lastName) {
+//   var modifiedFirstName = firstName[0].toUpperCase() + firstName.slice(1).toLowerCase();
+//   var modifiedLastName = lastName.toUpperCase();
+//   return modifiedFirstName + ' ' + modifiedLastName;
+// }
 
-console.log(inName('Thomas', 'Truongchau') === 'Thomas TRUONGCHAU');
-
-
+$('#mapDiv').append(googleMap);
 
 /************************ EMPLOYMENT ************************/
 var work = {
@@ -18,7 +16,8 @@ var work = {
       'title' : 'Program Manager',
       'location' : 'Bellevue, WA',
       'dates' : 'September 2014 - Present',
-      'description' : 'Analysis & Experimentation Team. Create better features for the ExP Platform to enable all Microsoft teams to run trustworthy experimentation. Work across teams to evangelize a data-driven culture at Microsoft. Currently partnering with MSN teams to improve their experimentation capabilities and to run more experiments using our platform. Actively heading a team of data scientists, developers, and partner PMs to enable experimentation for the Spartan Default Homepage.',
+      'url' : 'http://www.microsoft.com',
+      'description' : 'Analysis & Experimentation Team. Work across organizations to evangelize a data-driven culture at Microsoft and design features for the <em>ExP Platform</em> to enable all Microsoft teams to run trustworthy experimentation. Partner with MSN teams to improve their experimentation capabilities and to run more experiments. Head team of data scientists, developers, and partner PMs to enable experimentation for the Spartan Default Homepage for Windows 10 in April 2015.',
       'keywords' : [
         'experimentation',
         'ab testing',
@@ -39,7 +38,8 @@ var work = {
       'title' : 'Program Manager Intern',
       'location' : 'Bellevue, WA',
       'dates' : 'June 2013 - Aug 2013',
-      'description' : 'Online Experimentation team. Designed, spec\'d, and implemented an experimentation management dashboard for experimenters. Dashboard feature improved users\' efficiency in accessing all running, completed, and new experiments.',
+      'url' : 'http://www.microsoft.com',
+      'description' : 'Bing Online Experimentation Team. Researched customer needs, designed, spec\'d, and implemented an experimentation management dashboard for Bing experimenters. Led team efforst for developing and launching alpha version. Dashboard improved usability - enhancing efficiency in accessing all running, new, and completed experiments - by reducing time to success by 67% for user.',
       'keywords' : [
         'internship',
         'experimentation',
@@ -56,11 +56,38 @@ var work = {
         'css',
         'javascript'
       ]
+    },
+    {
+      'employer' : 'Sanborn Media Factory',
+      'title' : 'Front-End Developer Intern',
+      'location' : 'New York, NY',
+      'dates' : 'June 2012 - Aug 2012',
+      'description' : 'Designed and implemented user interfaces for clients: DKNY, Vogue, Cosmo, Loft, and Conde Nast.',
+      'keywords' : [
+        'html',
+        'css',
+        'user interface',
+        'mockup'
+      ]
+    },
+    {
+      'employer' : 'Princeton University',
+      'title' : 'Computer Science Peer Tutor',
+      'location' : 'Princeton, NJ',
+      'dates' : 'September 2012 - May 2014',
+      'description' : 'Provide guidance and encouragement to students taking introductory computer science on campus.',
+      'keywords' : [
+        'teaching',
+        'java',
+        'programming',
+        'algorithms',
+        'data structures'
+      ]
     }
   ]
 };
 
-function displayWork() {
+work.display = function () {
   for (var job in work.jobs) {
     $('#workExperience').append(HTMLworkStart);
     var formattedEmployer = HTMLworkEmployer.replace('%data%', work.jobs[job]['employer']);
@@ -74,7 +101,7 @@ function displayWork() {
   }
 }
 
-displayWork();
+work.display();
 
 
 
@@ -85,19 +112,23 @@ var projects = {
       'title' : 'www.ptour.co',
       'dates' : 'Spring 2014',
       'description' : 'A virtual campus tour of Princeton University for prospective students. Built with Meteor.',
-      'images' : ''
+      'images' : 'images/ptour_thumbnail.png',
+      'url' : 'http://www.ptour.co'
     },
     {
       'title' : 'DinkyLink',
       'dates' : 'Fall 2014',
-      'description' : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, magnam illo asperiores cumque ipsam officia, illum sint quasi nihil qui repellat tempore eligendi eius, error? Perspiciatis nostrum autem, optio recusandae.',
-      'images' : ''
+      'description' : 'Cleanly designed mobile web app that provides the soonest train times leaving from Princeton to New York City, and vice versa. Built with Python and Google App Engine.',
+      'images' : 'images/dinkylinkhome_thumbnail.png',
+      'url' : 'http://princetondinkylink.appspot.com/'
     },
     {
       'title' : 'NavBelt',
       'dates' : 'Spring 2013',
-      'description' : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, magnam illo asperiores cumque ipsam officia, illum sint quasi nihil qui repellat tempore eligendi eius, error? Perspiciatis nostrum autem, optio recusandae.',
-      'images' : ''
+      'description' : 'Smartphone-and-belt coupled system that helps wearers navigate to unfamiliar destinations. System uses buzzers and an Arduino microcontroller. Built with Processing and Java.',
+      'images' : 'images/navbelt_thumbnail.jpg',
+      'url' : 'https://blogs.princeton.edu/humancomputerinterface/2013/05/13/final-blog-post-group-11/',
+      'video' : 'https://www.youtube.com/watch?v=dc86q3wBKvI&feature=youtu.be'
     }
   ]
 };
@@ -113,15 +144,14 @@ projects.display = function() {
     }
   }
 }
-
 projects.display();
 
 
 /************************ BIO ************************/
 var bio = {
   'name' : 'Thomas Truongchau',
-  'role' : 'Program Manager',
-  'welcomeMessage' : 'Hi there!',
+  'role' : 'Program Manager @Microsoft',
+  'welcomeMessage' : 'Hi there! I\'m a recent college grad, currently working at Microsoft, and love creating products. See below for more details.',
   'contacts' : {
     'email' : 'ttruongchau at gmail dot com',
     'github' : 'thtruo',
@@ -129,6 +159,7 @@ var bio = {
     'location' : 'Seattle, WA',
   },
   'skills' : [
+    'Product Management',
     'HTML',
     'CSS',
     'Javascript',
@@ -137,33 +168,51 @@ var bio = {
     'SQL',
     'Python',
     'Java',
-    //'C',
-    'Product Design'
+    'C',
   ]
 };
 
-var formattedHeader = HTMLheaderName.replace('%data%', bio.name);
-var formattedRole = HTMLheaderRole.replace('%data%', bio.role);
-$('#header').append(formattedHeader + formattedRole);
-
-var formattedBioPic = HTMLbioPic.replace('%data%', 'images/me.png');
-$('#header').append(formattedBioPic);
-
-if (bio.skills.length > 0) {
-  $('#header').append(HTMLskillsStart);
-  for (var i = 0; i < bio.skills.length; i++) {
-    $('#header').append(HTMLskills.replace('%data%', bio.skills[i]));
+// Helper function displays only contact information
+bio.displayContacts = function(HTMLlocation) {
+  if (Object.keys(bio.contacts).length > 0) {
+    for (var c in bio.contacts) {
+      var formattedContact     = HTMLcontactGeneric.replace('%contact%', c);
+      var formattedContactData =
+        formattedContact.replace('%data%', bio.contacts[c]);
+      $(HTMLlocation).append(formattedContactData);
+    }
   }
 }
 
-if (Object.keys(bio.contacts).length > 0) {
-  for (var c in bio.contacts) {
-    var formattedContact = HTMLcontactGeneric.replace('%contact%', c);
-    var formattedContactData = formattedContact.replace('%data%', bio.contacts[c]);
-    $('#topContacts').append(formattedContactData);
+bio.display = function() {
+  var formattedHeader = HTMLheaderName.replace('%data%', bio.name);
+  var formattedRole   = HTMLheaderRole.replace('%data%', bio.role);
+  $('#header').append(formattedHeader + formattedRole);
+
+  // if (Object.keys(bio.contacts).length > 0) {
+  //   for (var c in bio.contacts) {
+  //     var formattedContact     = HTMLcontactGeneric.replace('%contact%', c);
+  //     var formattedContactData =
+  //       formattedContact.replace('%data%', bio.contacts[c]);
+  //     $('#topContacts').append(formattedContactData);
+  //   }
+  // }
+  bio.displayContacts('#topContacts');
+
+  $('#header').append(HTMLWelcomeMsg.replace('%data%', bio.welcomeMessage));
+
+  var formattedBioPic = HTMLbioPic.replace('%data%', 'images/mejump.jpg');
+  $('#header').append(formattedBioPic);
+
+  if (bio.skills.length > 0) {
+    $('#header').append(HTMLskillsStart);
+    for (var i = 0; i < bio.skills.length; i++) {
+      $('#skills').append(HTMLskills.replace('%data%', bio.skills[i]));
+    }
   }
 }
 
+bio.display();
 
 
 /************************ EDUCATION ************************/
@@ -172,10 +221,22 @@ var education = {
     {
       'name' : 'Princeton University',
       'location' : 'Princeton, NJ',
-      'degree' : 'B.S.E',
+      'degree' : 'BSE',
       'majors' : ['Computer Science'],
       'dates' : '2010 - 2014',
-      'url' : 'http://www.cs.princeton.edu/'
+      'url' : 'http://www.cs.princeton.edu/',
+      'courses' : [
+        'Human-Computer Interface',
+        'Algorithms & Data Structures',
+        'Programming Systems',
+        'Artificial Intelligence',
+        'Information Security',
+        'Operating Systems',
+        'E-Commerce',
+        'Advanced Programming Techniques',
+        'Innovating Across Technology, Business, & Markets',
+        'Reasoning About Computation'
+      ]
     }
   ],
   'onlineCourses' : [
@@ -188,4 +249,48 @@ var education = {
   ]
 };
 
-$('#mapDiv').append(googleMap);
+
+education.display = function() {
+  $('#education').append(HTMLschoolStart);
+
+  for (var school in education.schools) {
+    var formattedSchoolName =
+      HTMLschoolName.replace('%data%', education.schools[school].name);
+    formattedSchoolName =
+      formattedSchoolName.replace('#', education.schools[school].url);
+    var formattedSchoolDegree =
+      HTMLschoolDegree.replace('%data%', education.schools[school].degree);
+    var formattedSchoolDates =
+      HTMLschoolDates.replace('%data%', education.schools[school].dates);
+    var formattedSchoolLocation =
+      HTMLschoolLocation.replace('%data%', education.schools[school].location);
+    var formattedSchoolMajor =
+      HTMLschoolMajor.replace('%data%', education.schools[school].majors);
+    $('.education-entry:last').append(formattedSchoolName + formattedSchoolDegree);
+    $('.education-entry:last').append(formattedSchoolDates);
+    $('.education-entry:last').append(formattedSchoolLocation);
+    $('.education-entry:last').append(formattedSchoolMajor);
+  }
+
+  $('.education-entry:last').append(HTMLonlineClasses);
+  for (var i in education.onlineCourses) {
+    var formattedOnlineTitle = HTMLonlineTitle.replace('%data%', education.onlineCourses[i].title);
+    formattedOnlineTitle = formattedOnlineTitle.replace('#', education.onlineCourses[i].url);
+    var formattedOnlineSchool = HTMLonlineSchool.replace('%data%', education.onlineCourses[i].school);
+    var formattedOnlineDates = HTMLonlineDates.replace('%data%', education.onlineCourses[i].dates);
+    var formattedOnlineURL = HTMLonlineURL.replace('%data%', education.onlineCourses[i].url);
+    formattedOnlineURL = formattedOnlineURL.replace('#', education.onlineCourses[i].url);
+    $('.education-entry:last').append(formattedOnlineTitle + formattedOnlineSchool);
+    $('.education-entry:last').append(formattedOnlineDates);
+    $('.education-entry:last').append(formattedOnlineURL);
+
+  }
+}
+education.display();
+
+
+/******************* Let's Connect **********************/
+bio.displayContacts('#footerContacts');
+var footerDate = '&copy; ' + new Date().getFullYear();
+var formattedFooterTimeStamp = HTMLfooterTimeStamp.replace('%data%', footerDate);
+$('#letsConnect').append(formattedFooterTimeStamp);
