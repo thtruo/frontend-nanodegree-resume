@@ -1,11 +1,3 @@
-// $('#main').append(internationalizeButton);
-
-// function inName(firstName, lastName) {
-//   var modifiedFirstName = firstName[0].toUpperCase() + firstName.slice(1).toLowerCase();
-//   var modifiedLastName = lastName.toUpperCase();
-//   return modifiedFirstName + ' ' + modifiedLastName;
-// }
-
 $('#mapDiv').append(googleMap);
 
 /************************ EMPLOYMENT ************************/
@@ -189,14 +181,6 @@ bio.display = function() {
   var formattedRole   = HTMLheaderRole.replace('%data%', bio.role);
   $('#header').append(formattedHeader + formattedRole);
 
-  // if (Object.keys(bio.contacts).length > 0) {
-  //   for (var c in bio.contacts) {
-  //     var formattedContact     = HTMLcontactGeneric.replace('%contact%', c);
-  //     var formattedContactData =
-  //       formattedContact.replace('%data%', bio.contacts[c]);
-  //     $('#topContacts').append(formattedContactData);
-  //   }
-  // }
   bio.displayContacts('#topContacts');
 
   $('#header').append(HTMLWelcomeMsg.replace('%data%', bio.welcomeMessage));
@@ -248,7 +232,6 @@ var education = {
     }
   ]
 };
-
 
 education.display = function() {
   $('#education').append(HTMLschoolStart);
